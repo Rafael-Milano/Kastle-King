@@ -8,4 +8,9 @@ public class EnemyData : ScriptableObject
     public float dmg = 5f;
     public float atk_speed = 1f;
     public float mov_speed = 2f;
+
+    [Header("Wave")]
+    public EnemyStats prefab;   // prefab que o WaveManager vai criar
+    public int cost = 1;        // quanto este inimigo "custa" no orçamento
+    public int min_wave = 1;    // a partir de qual onda ele pode aparecer
 }

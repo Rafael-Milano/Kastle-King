@@ -6,6 +6,9 @@ public class CastleStatus : MonoBehaviour
     [SerializeField] float health;
     [SerializeField] float max_health = 1000f;
 
+    public float Health => health;
+    public float MaxHealth => max_health;
+
     // ------------------------------------------------
 
     [Header("Attack")]
@@ -23,6 +26,13 @@ public class CastleStatus : MonoBehaviour
     }
 
 
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+        health = Mathf.Max(health, 0f);
+    }
+
+
 
     public float GetFinalDamage()
     {
@@ -32,7 +42,7 @@ public class CastleStatus : MonoBehaviour
     public float GetFinalAttackSpeed()
     {
         float final_speed = attack_speed * attack_speed_multiplier;
-        return Mathf.Max(final_speed, 0.1f); 
+        return Mathf.Max(final_speed, 0.1f);
     }
 
 
@@ -47,4 +57,9 @@ public class CastleStatus : MonoBehaviour
     {
         attack_speed_multiplier *= factor;
     }
+
+    // --------------------------------------------------
+
+    public float HP => health;
+    public float MaxHP => max_health;
 }

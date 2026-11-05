@@ -24,7 +24,11 @@ public class CastleProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<EnemyStats>().TakeDamage(damage);
-        Destroy(gameObject);
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<EnemyStats>().TakeDamage(damage);
+            Destroy(gameObject);
+        }     
     }
 }

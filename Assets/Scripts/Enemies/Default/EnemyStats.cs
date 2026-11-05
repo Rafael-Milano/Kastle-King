@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
@@ -5,6 +6,8 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] EnemyData data;
 
     float hp;
+    bool is_dead = false;
+    public event Action OnDeath;
 
     private void Start()
     {
@@ -13,6 +16,8 @@ public class EnemyStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (is_dead) return;
+
         hp -= damage;
 
         if (hp <= 0)
@@ -23,8 +28,9 @@ public class EnemyStats : MonoBehaviour
 
     void Death()
     {
-        Destroy(this.gameObject);
-        
+        is_dead = true;
+        OnDeath?.Invoke();
+        Destroy(gameObject);
     }
 
     // ------------------------------
@@ -32,5 +38,4 @@ public class EnemyStats : MonoBehaviour
     public float Damage => data.dmg;
     public float AttackSpeed => data.atk_speed;
     public float MoveSpeed => data.mov_speed;
-
 }
