@@ -15,6 +15,8 @@ public class CastleAttack : MonoBehaviour
 
     float next_fire_time = 0f;
 
+    [SerializeField] float spread_angle = 10f;
+
     //----------------------------------------------
 
     [Header("Cannon Aim")]
@@ -36,6 +38,8 @@ public class CastleAttack : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0f) return;
+
         CannonAim();
 
         // Shoot
@@ -72,9 +76,26 @@ public class CastleAttack : MonoBehaviour
 
     void Shoot()
     {
-        CastleProjectile projectile = Instantiate(projectile_prefab, fire_point.position, transform.rotation);
-        projectile.SetDamage(castle_status.GetFinalDamage());
+        int count = castle_status.GetProjectileCount();
 
+        for (int i = 0; i < count; i++)
+        {
+            float offset = (i - (count - 1) / 2f) * spread_angle;
+            Quaternion rotation = transform.rotation * Quaternion.Euler(0f, 0f, offset);
+
+            CastleProjectile projectile = Instantiate(projectile_prefab, fire_point.position, rotation);
+
+            float damage = castle_status.RollDamage(out bool is_crit);
+            projectile.SetDamage(damage);
+            projectile.SetPierce(castle_status.GetPierceCount());
+            projectile.SetCrit(is_crit, castle_status);
+
+
+            if (is_crit)
+            {
+                Debug.Log("CRÍTICO! Dano: " + damage);
+            }
+        }
         float attack_speed = castle_status.GetFinalAttackSpeed();
         float interval = 1f / attack_speed;
         next_fire_time = Time.time + interval;

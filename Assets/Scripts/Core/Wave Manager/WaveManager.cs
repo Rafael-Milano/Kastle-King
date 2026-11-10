@@ -24,6 +24,7 @@ public class WaveManager : MonoBehaviour
     // UI
     public int CurrentWave => current_wave;
     public event Action<int> OnWaveChanged;
+    public event Action<int> OnWaveEnded;
 
     private void Start()
     {
@@ -39,8 +40,6 @@ public class WaveManager : MonoBehaviour
 
         List<EnemyData> wave_enemies = BuildWave(current_wave);
         enemies_alive = wave_enemies.Count;
-
-        Debug.Log("Onda " + current_wave + " -------- Inimigos: " + wave_enemies.Count);
 
         foreach (EnemyData data in wave_enemies)
         {
@@ -115,7 +114,11 @@ public class WaveManager : MonoBehaviour
 
     void EndWave()
     {
-        Debug.Log("Onda " + current_wave + " terminada!");
+        OnWaveEnded?.Invoke(current_wave);
+    }
+
+    public void BeginNextWave()
+    {
         StartCoroutine(StartNextWave());
     }
 

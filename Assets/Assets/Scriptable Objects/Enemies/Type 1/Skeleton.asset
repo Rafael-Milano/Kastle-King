@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ee239855cdc12498e02413120e5980, type: 3}
   m_Name: Skeleton
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  max_hp: 40
-  dmg: 5
+  max_hp: 50
+  dmg: 10
   atk_speed: 1
   mov_speed: 1
   prefab: {fileID: 7536791423599368108, guid: e6f5a6bb585ec20479130fbc6fd76a21, type: 3}
-  cost: 2
+  cost: 3
   min_wave: 1
