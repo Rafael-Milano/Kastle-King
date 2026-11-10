@@ -29,7 +29,8 @@ public class EnemyAttack : MonoBehaviour
         CastleStatus castle = target.GetComponentInParent<CastleStatus>();
         if (castle == null) return;
 
-        castle.TakeDamage(stats.Damage);
+        float final_damage = Mathf.Max(stats.Damage - castle.Defense, 1f);
+        castle.TakeDamage(final_damage);
 
         float interval = 1f / stats.AttackSpeed;
         next_attack_time = Time.time + interval;
