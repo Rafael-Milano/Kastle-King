@@ -51,7 +51,7 @@ public class CastleProjectile : MonoBehaviour
         if (already_hit.Contains(enemy)) return;
         already_hit.Add(enemy);
 
-        enemy.TakeDamage(damage);
+        enemy.TakeDamage(damage, is_crit);
 
         if (is_crit && owner != null)
         {

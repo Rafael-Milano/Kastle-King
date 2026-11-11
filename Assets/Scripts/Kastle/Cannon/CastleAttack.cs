@@ -47,12 +47,6 @@ public class CastleAttack : MonoBehaviour
         {
             Shoot();
         }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            castle_status.MultiplyAttackSpeed(1.2f);
-            Debug.Log("Attack speed: " + castle_status.GetFinalAttackSpeed());
-        }
     }
 
     private void CannonAim()
@@ -90,11 +84,6 @@ public class CastleAttack : MonoBehaviour
             projectile.SetPierce(castle_status.GetPierceCount());
             projectile.SetCrit(is_crit, castle_status);
 
-
-            if (is_crit)
-            {
-                Debug.Log("CRÍTICO! Dano: " + damage);
-            }
         }
         float attack_speed = castle_status.GetFinalAttackSpeed();
         float interval = 1f / attack_speed;

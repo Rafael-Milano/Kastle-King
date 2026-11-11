@@ -17,5 +17,5 @@ MonoBehaviour:
   atk_speed: 1
   mov_speed: 1
   prefab: {fileID: 7536791423599368108, guid: e6f5a6bb585ec20479130fbc6fd76a21, type: 3}
-  cost: 3
+  cost: 2
   min_wave: 1

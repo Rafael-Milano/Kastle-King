@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ee239855cdc12498e02413120e5980, type: 3}
   m_Name: Demon
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  max_hp: 110
+  max_hp: 100
   dmg: 20
   atk_speed: 0.5
   mov_speed: 0.7
   prefab: {fileID: 7536791423599368108, guid: a704237ffb56dd24580be08d7e304380, type: 3}
-  cost: 7
+  cost: 6
   min_wave: 3
