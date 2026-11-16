@@ -26,6 +26,8 @@ public class CardManager : MonoBehaviour
 
     void HandleWaveEnded(int wave)
     {
+        if (castle_status.IsDead) return;
+
         bool enchanted_wave = wave % enchanted_every == 0;
         List<CardData> offer = BuildOffer(enchanted_wave);
 

@@ -10,6 +10,11 @@ public class CastleStatus : MonoBehaviour
     public float Health => health;
     public float MaxHealth => max_health;
 
+    bool is_dead = false;
+
+    public bool IsDead => is_dead;
+    public event System.Action OnDied;
+
     // ------------------------------------------------
 
     [Header("Attack")]
@@ -69,8 +74,16 @@ public class CastleStatus : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (is_dead) return;
+
         health -= amount;
         health = Mathf.Max(health, 0f);
+
+        if (health <= 0f)
+        {
+            is_dead = true;
+            OnDied?.Invoke();
+        }
     }
 
     // 
