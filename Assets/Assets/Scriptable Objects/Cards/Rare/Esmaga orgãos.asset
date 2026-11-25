@@ -16,5 +16,5 @@ MonoBehaviour:
   rarity: 1
   stat: 5
   bonus_type: 0
-  multiplier: 1.1
+  multiplier: 1.5
   flat_amount: 1000

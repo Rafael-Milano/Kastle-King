@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
     Rigidbody2D rb;
     Vector2 move_dir;
     
-
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +21,14 @@ public class EnemyMovement : MonoBehaviour
         {
             Vector3 direction = (target.position - transform.position).normalized;
             move_dir = direction;
+        }
+
+        if (this.transform.position.x >= target.transform.position.x) {
+            this.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 

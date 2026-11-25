@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WaveCount_UI : MonoBehaviour
 {
     [SerializeField] WaveManager wave_manager;
 
-    public Text contaddor;
+    public TMP_Text contaddor;
 
     private void OnEnable()
     {
@@ -19,6 +20,6 @@ public class WaveCount_UI : MonoBehaviour
 
     void UpdateText(int wave)
     {
-        contaddor.text = "Wave " + wave;
+        contaddor.text = "Onda " + wave;
     }
 }
